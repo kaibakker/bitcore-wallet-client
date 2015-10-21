@@ -57,7 +57,7 @@ var client = new Client({
   verbose: false,
 });
 
-client.joinWallet(secret,  "Thomas", function(err, wallet) {
+client.joinWallet(secret,  "Thomas", {}, function(err, wallet) {
   // Handle err
   console.log('Joined ' + wallet.name + '!');
   fs.writeFileSync('thomas.dat', client.export());
@@ -97,7 +97,7 @@ Note that the scripts created two files named `irene.dat` and `thomas.dat`. With
 * [api.isComplete()](#API#isComplete)
 * [api.openWallet(cb)](#API#openWallet)
 * [api.createWallet(walletName, copayerName, m, n, opts, cb)](#API#createWallet)
-* [api.joinWallet(secret, copayerName, cb)](#API#joinWallet)
+* [api.joinWallet(secret, copayerName, options, cb)](#API#joinWallet)
 * [api.getStatus(cb)](#API#getStatus)
 * [api.sendTxProposal(opts)](#API#sendTxProposal)
 * [api.getTx(id, cb)](#API#getTx)
@@ -189,13 +189,14 @@ Create a wallet.
 
 **Returns**: `Callback` - cb - Returns the wallet  
 <a name="API#joinWallet"></a>
-###API.joinWallet(secret, copayerName, cb)
+###API.joinWallet(secret, copayerName, options, cb)
 Join to an existent wallet
 
 **Params**
 
 - secret `String`  
-- copayerName `String`  
+- copayerName `String`
+- options `Hash`
 - cb `Callback`  
 
 **Returns**: `Callback` - cb - Returns the wallet  
